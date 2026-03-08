@@ -15,15 +15,19 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     })
   }
 
+  const removeFromCart = (product: ProductItem) => {
+    setCart((prev) => prev.filter((item) => item.id !== product.id))
+  }
+
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
   const checkoutToWhatsApp = () => {
-    const phone = "6281234567890" // Ganti dengan nomor WA toko
+    const phone = "6282273366718" // Ganti dengan nomor WA toko
     const message = cart.map((item) => `- ${item.name} (${item.quantity}x)`).join("%0A")
     const total = `Total: Rp ${totalPrice.toLocaleString()}`
     const url = `https://wa.me/${phone}?text=Hello, I would like to order:%0A${message}%0A%0A${total}`
     window.open(url, "_blank")
   }
 
-  return <CartContext.Provider value={{ cart, addToCart, totalPrice, checkoutToWhatsApp }}>{children}</CartContext.Provider>
+  return <CartContext.Provider value={{ cart, addToCart, totalPrice, removeFromCart, checkoutToWhatsApp }}>{children}</CartContext.Provider>
 }

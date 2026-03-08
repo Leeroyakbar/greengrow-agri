@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ShoppingCart, Search, Leaf, Menu, X } from "lucide-react"
+import { ShoppingCart, Search, Leaf, Menu, X, Trash2 } from "lucide-react"
 import { useCart } from "../hooks/useCart"
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
-  const { cart, totalPrice, checkoutToWhatsApp } = useCart()
+  const { cart, totalPrice, removeFromCart, checkoutToWhatsApp } = useCart()
 
   // Mencegah scroll saat menu mobile terbuka
   useEffect(() => {
@@ -58,7 +58,7 @@ const Navbar = () => {
           </ul>
 
           {/* Search Bar (Desktop) */}
-          <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-[300px] relative">
+          <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-75 relative">
             <input
               type="text"
               value={searchQuery}
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div className="space-y-6">
-                  <div className="max-h-[300px] overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+                  <div className="max-h-75 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
                     {cart.map((item) => (
                       <div key={item.id} className="flex justify-between items-center group">
                         <div className="flex gap-3 items-center">
@@ -113,6 +113,8 @@ const Navbar = () => {
                             </p>
                           </div>
                         </div>
+
+                        <Trash2 className="w-4 h-4 text-secondary/60 hover:text-red-500 cursor-pointer transition-colors" onClick={() => removeFromCart(item)} />
                       </div>
                     ))}
                   </div>
@@ -121,7 +123,7 @@ const Navbar = () => {
                       <span className="text-secondary font-medium">Total</span>
                       <span className="text-xl font-bold text-primary font-display">Rp {totalPrice.toLocaleString()}</span>
                     </div>
-                    <button onClick={checkoutToWhatsApp} className="w-full bg-primary text-white py-4 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-lg shadow-primary/10">
+                    <button onClick={checkoutToWhatsApp} className="w-full bg-primary text-white py-4 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-lg shadow-primary/10 cursor-pointer">
                       Checkout via WhatsApp
                     </button>
                   </div>
@@ -135,7 +137,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay (Sesuai Foto 3) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25, stiffness: 200 }} className="fixed inset-0 bg-white z-[100] flex flex-col p-6 overflow-y-auto">
+          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25, stiffness: 200 }} className="fixed inset-0 bg-white z-100 flex flex-col p-6 overflow-y-auto">
             {/* Header Mobile Menu */}
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-2">
