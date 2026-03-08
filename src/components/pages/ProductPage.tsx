@@ -39,15 +39,22 @@ const ProductsPage = () => {
               <div>
                 <h3 className="font-bold text-primary mb-4">Category</h3>
                 <div className="space-y-2">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setSearchParams({ category: cat === "All" ? "" : slugify(cat) })}
-                      className={`block w-full text-left px-4 py-2 rounded-lg transition-all ${categoryFilter === slugify(cat) ? "bg-primary text-white" : "hover:bg-white text-secondary"}`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
+                  {categories.map((cat) => {
+                    
+                    const catSlug = cat === "All" ? "" : slugify(cat)
+                    const currentFilter = searchParams.get("category") || ""
+                    const isActive = currentFilter === catSlug
+
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => setSearchParams(cat === "All" ? {} : { category: catSlug })}
+                        className={`block w-full text-left px-4 py-2 rounded-lg transition-all ${isActive ? "bg-primary text-white" : "hover:bg-white text-secondary"}`}
+                      >
+                        {cat}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
 

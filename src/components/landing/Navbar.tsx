@@ -102,11 +102,11 @@ const Navbar = () => {
 
             {/* Shop Now Button (Desktop only) */}
             <button
-              onClick={(e) => {
+              onClick={() => {
                 // Kita arahkan ke #products
-                handleNavClick(e, "#products")
+                navigate(`/products`)
               }}
-              className="hidden md:block bg-primary text-white px-7 py-2.5 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-md shadow-primary/10"
+              className="hidden md:block bg-primary text-white px-7 py-2.5 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-md shadow-primary/10 cursor-pointer"
             >
               Shop Now
             </button>
