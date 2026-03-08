@@ -8,14 +8,28 @@ const categories = ["All", "Fertilizers", "Organic Fertilizers", "Livestock Feed
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [search, setSearch] = useState("")
+
+  const search = searchParams.get("search") || ""
   const [priceRange, setPriceRange] = useState(1000000000)
 
   const categoryFilter = searchParams.get("category") || "All"
 
+  const handleSearchChange = (val: string) => {
+    // Update URL secara dinamis tanpa reload halaman
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev)
+      if (val) {
+        newParams.set("search", val)
+      } else {
+        newParams.delete("search")
+      }
+      return newParams
+    })
+  }
+
   const filteredProducts = useMemo(() => {
     return allProducts.filter((product) => {
-      const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase())
+      const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase()) || product.category.toLowerCase().includes(search.toLowerCase())
       const matchesCategory = categoryFilter === "All" || slugify(product.category) === categoryFilter
       const matchesPrice = product.price <= priceRange
       return matchesSearch && matchesCategory && matchesPrice
@@ -33,14 +47,13 @@ const ProductsPage = () => {
             <aside className="w-full lg:w-64 shrink-0 space-y-8">
               <div>
                 <h3 className="font-bold text-primary mb-4">Search</h3>
-                <input placeholder="Find product..." onChange={(e) => setSearch(e.target.value)} className="w-full p-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-primary/20" />
+                <input placeholder="Find product..." onChange={(e) => handleSearchChange(e.target.value)} className="w-full p-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-primary/20" />
               </div>
 
               <div>
                 <h3 className="font-bold text-primary mb-4">Category</h3>
                 <div className="space-y-2">
                   {categories.map((cat) => {
-                    
                     const catSlug = cat === "All" ? "" : slugify(cat)
                     const currentFilter = searchParams.get("category") || ""
                     const isActive = currentFilter === catSlug

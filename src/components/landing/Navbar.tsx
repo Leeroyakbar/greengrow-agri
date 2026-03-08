@@ -30,11 +30,16 @@ const Navbar = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    const productSection = document.getElementById("products")
-    productSection?.scrollIntoView({ behavior: "smooth" })
-    setIsMobileMenuOpen(false) // Tutup menu jika di mobile
-  }
 
+    if (!searchQuery.trim()) return // Jangan lakukan apa-apa jika kosong
+
+    // Navigasi ke halaman products dengan parameter search
+    // Kita gunakan encodeURIComponent untuk menjaga keamanan URL
+    navigate(`/products?search=${encodeURIComponent(searchQuery)}`)
+
+    setSearchQuery("") // Reset input
+    setIsMobileMenuOpen(false) // Tutup menu mobile jika terbuka
+  }
   const navigate = useNavigate()
   const location = useLocation()
 
