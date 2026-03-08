@@ -45,7 +45,7 @@ const Hero = () => {
             className="absolute -bottom-6 -left-10 md:left-[-2rem] bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 max-w-xs"
           >
             <div className="w-16 h-16 bg-soft-beige rounded-xl overflow-hidden shrink-0">
-              <img src="/public/hero-organic-compost.png" alt="Product thumb" className="w-full h-full object-cover" />
+              <img src="/hero-organic-compost.png" alt="Product thumb" className="w-full h-full object-cover" />
             </div>
             <div>
               <h4 className="font-bold text-primary text-sm">Organic Compost</h4>
