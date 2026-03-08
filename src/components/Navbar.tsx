@@ -90,7 +90,7 @@ const Navbar = () => {
         {/* Cart Dropdown Desktop (Sesuai Foto 1) */}
         <AnimatePresence>
           {isCartOpen && (
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }} className="absolute right-6 top-20 w-[350px] bg-white rounded-[2rem] shadow-2xl p-8 border border-gray-50 z-[60]">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }} className="absolute right-9 md:right-6 top-20 w-87.5 bg-white rounded-4xl shadow-2xl p-8 border border-gray-50 z-[60]">
               <h3 className="font-display text-2xl font-bold text-primary mb-6">Your Cart</h3>
 
               {cart.length === 0 ? (

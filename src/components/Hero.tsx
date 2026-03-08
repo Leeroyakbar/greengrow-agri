@@ -31,10 +31,10 @@ const Hero = () => {
         {/* Right Visual (Sesuai Foto Referensi) */}
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="relative">
           {/* Main Large Image Container */}
-          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-square">
-            <img src="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&q=80&w=1000" alt="Premium Organic Fertilizer" className="w-full h-full object-cover" />
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-4/5 lg:aspect-square">
+            <img src="/hero-primary-organic.png" alt="Premium Organic Fertilizer" className="w-full h-full object-cover" />
             {/* Soft Overlay for text readability if needed */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
           </div>
 
           {/* Floating Product Card (Sesuai Foto) */}
@@ -42,7 +42,7 @@ const Hero = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute -bottom-6 -left-10 md:left-[-2rem] bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 max-w-xs"
+            className="absolute -bottom-6 left-2 md:-left-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 max-w-xs"
           >
             <div className="w-16 h-16 bg-soft-beige rounded-xl overflow-hidden shrink-0">
               <img src="/hero-organic-compost.png" alt="Product thumb" className="w-full h-full object-cover" />
