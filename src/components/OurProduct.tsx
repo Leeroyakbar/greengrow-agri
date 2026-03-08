@@ -1,59 +1,60 @@
 import { useState } from "react"
 import ProductCard from "../layout/ProductCard"
 import type { ProductItem } from "../types/ProductItem"
+import { motion } from "framer-motion"
 
 const products: ProductItem[] = [
   {
     id: 1,
-    name: "Organic Compost",
-    description: "Rich organic soil",
-    price: 24.99,
-    image: "/product/organic-compost.png",
+    name: "PUPUK PETRO-CAS",
+    description: "Petro Calcium Sulphate provides calcium and sulfur to improve soil quality, strengthen roots, and support healthier plant growth",
+    price: 44.999,
+    image: "/product/petro-cas.png",
     quantity: 0,
     category: "Fertilizers",
   },
   {
     id: 2,
-    name: "NPK Fertilizer",
-    description: "Balanced growth",
-    price: 32.99,
-    image: "/product/npk.png",
+    name: "NPK Mutiara",
+    description: "Balanced compound fertilizer (16% N, 16% P₂O₅, 16% K₂O) in blue prill granules, easily soluble and readily absorbed by plants",
+    price: 934.999,
+    image: "/product/npk-mutiara.png",
     quantity: 0,
     category: "Fertilizers",
   },
   {
     id: 3,
-    name: "Liquid Nutrients",
-    description: "Fast-acting",
-    price: 18.99,
-    image: "/product/liquid-nutrient.png",
+    name: "Pupuk Hayati Cair Bio Trent",
+    description: "Improves soil structure, accelerates composting, supplies nutrients, and naturally increases crop yields—ideal for palm oil, rice, and secondary crops",
+    price: 109.999,
+    image: "/product/bio-trent.png",
     quantity: 0,
     category: "Fertilizers",
   },
   {
     id: 4,
-    name: "Chicken Feed Premium",
-    description: "High-protein poultry feed blend",
-    price: 28.99,
+    name: "Hi Pro Vite",
+    description: "Hi-Pro-Vite is a complete, high-quality poultry feed from PT Charoen Pokphand Indonesia Tbk, formulated to promote faster growth, stronger bones, and improved immunity in chickens",
+    price: 749.999,
     image: "/product/chicken-feed.png",
     quantity: 0,
     category: "Livestock Feed",
   },
   {
     id: 5,
-    name: "Fish Feed Pellets",
-    description: "Nutrient-rich aquaculture feed",
-    price: 22.99,
+    name: "AKARI Premium Maxi Cichlid Pellets",
+    description: "AKARI Premium Maxi Cichlid pellets are high-quality fish feed specially formulated for cichlids, providing balanced nutrition for optimal growth and ideal body shape",
+    price: 99.999,
     image: "/product/fish-pellete.png",
     quantity: 0,
     category: "Livestock Feed",
   },
   {
     id: 6,
-    name: "Rice Seeds (Premium)",
-    description: "High-yield premium rice seeds",
-    price: 19.99,
-    image: "/product/rice-seed.png",
+    name: "Benih CMK Super Baja Premium ",
+    description: "Super Baja F1 is a superior hybrid curly chili variety known for its strong resistance to Gemini virus, pests, and extreme weather",
+    price: 409.999,
+    image: "/product/super-baja.png",
     quantity: 0,
     category: "Seeds",
   },
@@ -69,12 +70,16 @@ const OurProducts = () => {
     <section id="products" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="font-display text-4xl font-bold text-primary mb-4">Our Products</h2>
-          <p className="text-secondary/70">Explore our range of premium agricultural supplies</p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="font-display text-4xl font-bold text-primary mb-4">
+            Our Products
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-secondary/70">
+            Explore our range of premium agricultural supplies
+          </motion.p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center gap-2 mb-12 flex-wrap">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex justify-center gap-2 mb-12 flex-wrap">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -84,7 +89,7 @@ const OurProducts = () => {
               {tab}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Product Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -94,11 +99,11 @@ const OurProducts = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center">
           <a href="/products" className="cursor-pointer inline-block border-2 border-primary text-primary px-10 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all">
             View All Products
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

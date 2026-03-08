@@ -23,13 +23,20 @@ const ProductCard = ({ product }: { product: ProductItem }) => {
   }
 
   return (
-    <motion.div whileHover={{ y: -5 }} className="bg-white p-5 rounded-4xl border border-gray-100 shadow-sm hover:shadow-xl transition-all">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: product.id * 0.2 }}
+      whileHover={{ y: -5 }}
+      className="flex flex-col bg-white p-5 rounded-4xl border border-gray-100 shadow-sm hover:shadow-xl justify-between transition-all"
+    >
       <div className="bg-soft-beige rounded-3xl overflow-hidden mb-4 aspect-square flex items-center justify-center">
         <img src={product.image} alt={product.name} className="object-contain w-full h-full p-4" />
       </div>
       <h3 className="font-bold text-primary mb-1">{product.name}</h3>
       <p className="text-secondary/60 text-sm mb-4">{product.description}</p>
-      <p className="font-display font-bold text-xl text-primary mb-4">${product.price}</p>
+      <p className="font-display font-bold text-xl text-primary mb-4">Rp. {product.price}</p>
 
       <div className="flex items-center gap-2">
         <div className="flex items-center bg-soft-beige rounded-full px-3 py-2 border">
