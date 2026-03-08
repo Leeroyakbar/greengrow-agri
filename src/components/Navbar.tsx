@@ -34,6 +34,19 @@ const Navbar = () => {
     setIsMobileMenuOpen(false) // Tutup menu jika di mobile
   }
 
+  // Ubah signature fungsinya menjadi seperti ini:
+  const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.replace("#", "")
+    const element = document.getElementById(targetId)
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <>
       <nav className="sticky top-0 z-50 w-full px-4 md:px-6 py-4 bg-soft-beige/90 backdrop-blur-md border-b border-gray-100">
@@ -50,7 +63,7 @@ const Navbar = () => {
           <ul className="hidden xl:flex items-center gap-8 text-[15px] font-medium text-secondary/70">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a href={link.href} className="hover:text-primary transition-colors">
+                <a href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="hover:text-primary transition-colors">
                   {link.name}
                 </a>
               </li>
@@ -78,7 +91,15 @@ const Navbar = () => {
             </button>
 
             {/* Shop Now Button (Desktop only) */}
-            <button className="hidden md:block bg-primary text-white px-7 py-2.5 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-md shadow-primary/10">Shop Now</button>
+            <button
+              onClick={(e) => {
+                // Kita arahkan ke #products
+                handleNavClick(e, "#products")
+              }}
+              className="hidden md:block bg-primary text-white px-7 py-2.5 rounded-full text-sm font-bold hover:bg-secondary transition-all shadow-md shadow-primary/10"
+            >
+              Shop Now
+            </button>
 
             {/* Hamburger Menu (Mobile) */}
             <button onClick={() => setIsMobileMenuOpen(true)} className="xl:hidden p-2 hover:bg-white rounded-full text-primary">
@@ -157,7 +178,7 @@ const Navbar = () => {
             <ul className="space-y-6 mb-10">
               {navLinks.map((link) => (
                 <motion.li key={link.name} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-                  <a href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-medium text-secondary hover:text-primary transition-colors inline-block">
+                  <a href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="text-2xl font-medium text-secondary hover:text-primary transition-colors inline-block">
                     {link.name}
                   </a>
                 </motion.li>
