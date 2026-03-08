@@ -32,7 +32,7 @@ const Hero = () => {
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="relative">
           {/* Main Large Image Container */}
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-4/5 lg:aspect-square">
-            <img src="/hero-primary-organic.png" alt="Premium Organic Fertilizer" className="w-full h-full object-cover" />
+            <img src="/indonesian-farmer.jpg" alt="Premium Organic Fertilizer" className="w-full h-full object-cover" />
             {/* Soft Overlay for text readability if needed */}
             <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
           </div>
@@ -45,11 +45,11 @@ const Hero = () => {
             className="absolute -bottom-6 left-2 md:-left-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 max-w-xs"
           >
             <div className="w-16 h-16 bg-soft-beige rounded-xl overflow-hidden shrink-0">
-              <img src="/hero-organic-compost.png" alt="Product thumb" className="w-full h-full object-cover" />
+              <img src="/product/npk-mutiara.png" alt="Product thumb" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h4 className="font-bold text-primary text-sm">Organic Compost</h4>
-              <p className="text-accent font-bold text-base">$24.99</p>
+              <h4 className="font-bold text-primary text-sm">NPK Mutiara</h4>
+              <p className="text-accent font-bold text-base">Rp.934.999</p>
             </div>
           </motion.div>
 

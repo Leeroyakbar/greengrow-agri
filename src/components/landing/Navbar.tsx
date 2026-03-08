@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ShoppingCart, Search, Leaf, Menu, X, Trash2 } from "lucide-react"
 import { useCart } from "../../hooks/useCart"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -35,14 +35,21 @@ const Navbar = () => {
     setIsMobileMenuOpen(false) // Tutup menu jika di mobile
   }
 
-  // Ubah signature fungsinya menjadi seperti ini:
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
     e.preventDefault()
-    const targetId = href.replace("#", "")
-    const element = document.getElementById(targetId)
 
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+    if (location.pathname !== "/") {
+      navigate("/")
+      setTimeout(() => {
+        const targetId = href.replace("#", "")
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" })
+      }, 100)
+    } else {
+      const targetId = href.replace("#", "")
+      document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" })
     }
 
     setIsMobileMenuOpen(false)

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom"
 import ProductCard from "../layout/ProductCard"
 import allProducts from "../../data/Product"
 import { Layout } from "../layout/Layout"
+import { slugify } from "../../utils/StringUtils"
 const categories = ["All", "Fertilizers", "Organic Fertilizers", "Livestock Feed", "Seeds", "Plant Nutrients", "Agricultural Tools"]
 
 const ProductsPage = () => {
@@ -15,7 +16,7 @@ const ProductsPage = () => {
   const filteredProducts = useMemo(() => {
     return allProducts.filter((product) => {
       const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase())
-      const matchesCategory = categoryFilter === "All" || product.category.toLowerCase() === categoryFilter.toLowerCase()
+      const matchesCategory = categoryFilter === "All" || slugify(product.category) === categoryFilter
       const matchesPrice = product.price <= priceRange
       return matchesSearch && matchesCategory && matchesPrice
     })
@@ -41,7 +42,7 @@ const ProductsPage = () => {
                   {categories.map((cat) => (
                     <button
                       key={cat}
-                      onClick={() => setSearchParams({ category: cat === "All" ? "" : cat })}
+                      onClick={() => setSearchParams({ category: cat === "All" ? "" : slugify(cat) })}
                       className={`block w-full text-left px-4 py-2 rounded-lg transition-all ${categoryFilter === cat ? "bg-primary text-white" : "hover:bg-white text-secondary"}`}
                     >
                       {cat}

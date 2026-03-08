@@ -1,6 +1,7 @@
 import CategoryCard from "../layout/CategoryCard"
 import { FlaskConical, Leaf, Fish, Sprout, Wheat, Wrench } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { slugify } from "../../utils/StringUtils"
 const categories = [
   { name: "Fertilizers", icon: FlaskConical },
   { name: "Organic Fertilizers", icon: Leaf },
@@ -14,7 +15,7 @@ const ShopByCategory = () => {
   const navigate = useNavigate()
 
   const handleCategoryClick = (name: string) => {
-    navigate(`/products?category=${name}`)
+    navigate(`/products?category=${slugify(name)}`)
   }
   return (
     <section id="categories" className="py-20 bg-white">
