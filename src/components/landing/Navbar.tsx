@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ShoppingCart, Search, Leaf, Menu, X, Trash2 } from "lucide-react"
-import { useCart } from "../hooks/useCart"
+import { useCart } from "../../hooks/useCart"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -56,7 +57,9 @@ const Navbar = () => {
             <div className="bg-primary p-2 rounded-full flex items-center justify-center">
               <Leaf className="text-accent w-5 h-5" />
             </div>
-            <span className="font-display font-bold text-xl md:text-2xl text-primary tracking-tight">GreenGrow</span>
+            <span className="font-display font-bold text-xl md:text-2xl text-primary tracking-tight">
+              <Link to="/">GreenGrow</Link>
+            </span>
           </div>
 
           {/* Desktop Navigation Links */}

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { useCart } from "../hooks/useCart"
+import { useCart } from "../../hooks/useCart"
 import { Minus, Plus, ShoppingCart } from "lucide-react"
-import type { ProductItem } from "../types/ProductItem"
+import type { ProductItem } from "../../types/ProductItem"
 import { toast } from "sonner" // Import sonner
 
 const ProductCard = ({ product }: { product: ProductItem }) => {
@@ -13,11 +13,12 @@ const ProductCard = ({ product }: { product: ProductItem }) => {
   const handleDecrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
 
   const handleAddToCart = () => {
-    // Menambahkan produk dengan quantity yang dipilih
+    // 1. Masukkan product BESERTA quantity yang dipilih ke dalam cart
     addToCart({ ...product, quantity })
 
+    // 2. Notifikasi
     toast.success(`${product.name} added to cart!`, {
-      description: `You added ${quantity} item(s) to your cart.`,
+      description: `Added ${quantity} item(s) to your cart.`,
       duration: 3000,
     })
   }
