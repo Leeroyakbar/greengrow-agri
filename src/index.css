@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  /* Warna sesuai prompt kamu */
+  --color-primary: #1f4d36;
+  --color-secondary: #4e7c59;
+  --color-accent: #7fb77e;
+  --color-soft-beige: #f4f6f3;
+
+  /* Font */
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+@layer base {
+  body {
+    @apply font-sans bg-soft-beige text-primary antialiased;
+  }
+}
+
+.glass-morphism {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
