@@ -43,7 +43,7 @@ const ProductsPage = () => {
                     <button
                       key={cat}
                       onClick={() => setSearchParams({ category: cat === "All" ? "" : slugify(cat) })}
-                      className={`block w-full text-left px-4 py-2 rounded-lg transition-all ${categoryFilter === cat ? "bg-primary text-white" : "hover:bg-white text-secondary"}`}
+                      className={`block w-full text-left px-4 py-2 rounded-lg transition-all ${categoryFilter === slugify(cat) ? "bg-primary text-white" : "hover:bg-white text-secondary"}`}
                     >
                       {cat}
                     </button>
